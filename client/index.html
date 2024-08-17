@@ -7,13 +7,30 @@
     <title>Notaty</title>
 </head>
 
-<body onload="updateNotesTable()">
+<body onload="updateNotes()">
     <!-- nav -->
-    <p id="greet"></p>
-    <!-- search -->
+    <div class="logo">
+        <p>Notaty</p>
+    </div>
 
-    <!-- table -->
+    <!-- search -->
+    <div class="search">
+        <button class="btn" onclick="openModal()">Add</button>
+        <input type="text" name="search" id="searchInput" placeholder="Search for note by title ...">
+        <button class="btn" onclick="searchNotes()">Search</button>
+    </div>
+
+    <!-- accordion -->
+    <div id="accordion" class="accordion"></div>
+
+    <!-- add note modal -->
+    <div id="addNoteModal"></div>
+
+    <!-- script -->
     <script src="./note-handler.js"></script>
+    <script src="./note-client.js"></script>
+    <script src="./modal-handler.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
