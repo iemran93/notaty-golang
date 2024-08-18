@@ -1,9 +1,10 @@
-<html lang="en">
+<!doctype html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/modal.css">
     <title>Notaty</title>
 </head>
 
@@ -24,12 +25,43 @@
     <div id="accordion" class="accordion"></div>
 
     <!-- add note modal -->
-    <div id="addNoteModal"></div>
+    <div id="addNoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <p id="p">Add new note</p>
+                <div class="row">
+                    <div class="left">
+                        <p>Title</p>
+                    </div>
+                    <div class="right">
+                        <input id="addTitle" type="text" class="modal-input" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="left">
+                        <p>Content</p>
+                    </div>
+                    <div class="right">
+                        <textarea id="addContent" class="modal-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="saveAddNoteBtn" onclick="saveNewNote()" type="button" class="btn">Save
+                    </button>
+                    <button id="cancelAddNoteBtn" type="button" class="btn">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <!-- script -->
-    <script src="./note-handler.js"></script>
-    <script src="./note-client.js"></script>
-    <script src="./modal-handler.js"></script>
+    <script src="static/note-handler.js"></script>
+    <script src="static/note-client.js"></script>
+    <script src="static/modal-handler.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 

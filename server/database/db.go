@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 	"time"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -47,6 +48,10 @@ func InitDB() error {
 func DBaddNote(note Note) error {
 	note.CreatedDate = time.Now().Format("2006-01-02 15:04:05")
 	note.UpdatedDate = time.Now().Format("2006-01-02 15:04:05")
+	noteTitle, noteContent := strings.TrimSpace(note.Title), strings.TrimSpace(note.Content)
+	if noteTitle == "" || noteContent == "" {
+		return fmt.Errorf("title and content cant be empty")
+	}
 	// add note to database
 	_, err := DB.Exec(addNoteQuery, note.Title, note.Content, note.CreatedDate, note.UpdatedDate)
 	if err != nil {
