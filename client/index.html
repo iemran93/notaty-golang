@@ -55,6 +55,39 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- edit note modal -->
+    <div id="editNoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <p id="p">Edit note</p>
+                <div class="row">
+                    <div class="left">
+                        <p>Title</p>
+                    </div>
+                    <div class="right">
+                        <input id="editTitle" type="text" class="modal-input" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="left">
+                        <p>Content</p>
+                    </div>
+                    <div class="right">
+                        <textarea id="editContent" class="modal-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="saveEditNoteBtn" onclick="saveEditNote()" type="button" class="btn">Save
+                    </button>
+                    <button id="cancelEditNoteBtn" type="button" class="btn">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
 
     </div>
 

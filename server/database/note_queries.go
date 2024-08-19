@@ -2,7 +2,7 @@ package database
 
 var addNoteQuery = `INSERT INTO notes (title, content, createddate, updateddate) VALUES (?, ?, ?, ?)`
 
-var getNotesQuery = `SELECT * FROM notes`
+var getNotesQuery = `SELECT id, title, content, createddate, updateddate FROM notes ORDER BY updateddate DESC`
 
 var getNoteByIdQuery = `SELECT * FROM notes WHERE id = ?`
 

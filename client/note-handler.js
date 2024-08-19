@@ -1,6 +1,7 @@
-function updateNotes() {
+function updateNotes(noteTitle) {
     var accordion = document.getElementById("accordion")
-    getNotes("", "")
+    accordion.innerHTML = ""
+    getNotes(noteTitle)
         .then((notes) => {
             notes.forEach(note => {
                 let button = document.createElement("button")
@@ -24,8 +25,11 @@ function updateNotes() {
                 // edit link
                 let editLink = document.createElement("a")
                 editLink.href = "#"
+                editLink.onclick = function () {
+                    editNoteModal(`${note["id"]}`)
+                }
                 let editImage = document.createElement("img")
-                editImage.src = "./images/edit.png"
+                editImage.src = "static/images/edit.png"
                 editImage.style.width = "22px"
                 editLink.appendChild(editImage)
                 panel.appendChild(editLink)
@@ -33,8 +37,11 @@ function updateNotes() {
                 // delete link
                 let deleteLink = document.createElement("a")
                 deleteLink.href = "#"
+                deleteLink.onclick = function () {
+                    deleteNotify(`${note["id"]}`)
+                }
                 let deleteImage = document.createElement("img")
-                deleteImage.src = "./images/delete.png"
+                deleteImage.src = "static/images/delete.png"
                 deleteImage.style.width = "22px"
                 deleteLink.appendChild(deleteImage)
                 panel.appendChild(deleteLink)
@@ -51,3 +58,28 @@ function updateNotes() {
             });
         })
 }
+
+function searchNotes() {
+    var noteTitle = document.getElementById("searchInput").value
+    updateNotes(noteTitle)
+}
+
+function deleteNotify(noteID) {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            deleteNote(noteID)
+                .then(() => {
+                    updateNotes()
+                })
+        }
+    });
+}
+

@@ -2,18 +2,20 @@
 
 const baseURL = "http://localhost:8000/api/notes"
 
-async function getNotes(data, type) {
+async function getNotes(noteTitle) {
     let url = baseURL
-    switch (type) {
-        case "byid":
-            url += `?id=${data}`
-            break;
-        case "bytitle":
-            url += `?title=${data}`
-            break;
-        default:
-            break;
+    if (noteTitle) {
+        url += `?title=${noteTitle}`
     }
+    const response = await fetch(url, {
+        method: "GET",
+    })
+    return response.json()
+}
+
+async function getNoteById(noteID) {
+    let url = baseURL
+    url += `?id=${noteID}`
     const response = await fetch(url, {
         method: "GET",
     })
