@@ -25,6 +25,9 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// print msg
+	log.Println("Server running on http://localhost:8000")
+
 	// Start the server on port 8000
 	http.ListenAndServe(":8000", nil)
 }
